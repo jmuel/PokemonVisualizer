@@ -1,5 +1,5 @@
 var app = require('express')();
-var port = process.env.PokemonVisualizerPort || 12345;
+var port = process.env.PORT || 12345;
 
 
 app.get('/', function(req, res) {
