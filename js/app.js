@@ -1,4 +1,4 @@
 var React = require('react');
-var Hello = require('./components/Hello.jsx');
+var Hello = require('./components/hello.jsx');
 
 React.render(<Hello/>, document.getElementById('root'));

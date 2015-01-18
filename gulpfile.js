@@ -6,7 +6,7 @@ var reactify = require('reactify');
 gulp.task('build', function () {
     return browserify().
         transform(reactify).
-        add('./js/App.js').
+        add('./js/app.js').
         bundle().
         pipe(source('bundle.js')).
         pipe(gulp.dest('./dist'));
