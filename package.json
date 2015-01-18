@@ -1,12 +1,14 @@
 {
   "name": "PokemonVisualizer",
   "version": "0.10.33",
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "node node_modules/.bin/gulp build"
+  },
   "dependencies": {
     "d3": "^3.5.3",
     "express": "^4.11.0",
-    "react": "^0.12.2"
-  },
-  "devDependencies": {
+    "react": "^0.12.2",
     "browserify": "^8.1.0",
     "gulp": "^3.8.10",
     "reactify": "^0.17.1",
