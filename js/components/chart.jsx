@@ -7,12 +7,18 @@ var Chart = React.createClass({
         domain: React.PropTypes.object
     },
 
+    handleResize: function() {
+        var el = this.getDOMNode();
+        d3Chart.update(el, this.getChartState());
+    },
+
     componentDidMount: function() {
         var el = this.getDOMNode();
         d3Chart.create(el, {
             width: '100%',
             height: '300px'
         }, this.getChartState());
+        window.addEventListener('resize', this.handleResize);
     },
 
     componentDidUpdate: function() {
@@ -28,8 +34,10 @@ var Chart = React.createClass({
     },
 
     componentWillUnmount: function() {
+        window.removeEventListener('resize', this.handleResize);
         var el = this.getDOMNode();
         d3Chart.destroy(el);
+
     },
 
     render: function () {

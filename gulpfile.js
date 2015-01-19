@@ -3,7 +3,7 @@ var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var reactify = require('reactify');
 
-gulp.task('build', function () {
+gulp.task('buildJs', function () {
     return browserify().
         transform(reactify).
         add('./js/app.js').
@@ -12,3 +12,10 @@ gulp.task('build', function () {
         pipe(gulp.dest('./dist'));
 });
 
+
+gulp.task('buildHTML', function() {
+    return gulp.src('./html/index.html').
+        pipe(gulp.dest('./dist'));
+});
+
+gulp.task('build', ['buildHTML','buildJs']);
