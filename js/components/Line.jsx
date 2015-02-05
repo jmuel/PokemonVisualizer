@@ -11,7 +11,7 @@ var Line = React.createClass({
 
     render: function() {
         return (
-            <path d={this.props.path} stroke={this.props.color} stroke-width={this.props.width} fill="none"/>
+            <path d={this.props.path} stroke={this.props.color} strokeWidth={this.props.width} fill="none"/>
         );
     }
 });

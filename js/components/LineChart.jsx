@@ -26,7 +26,7 @@ var LineChart = React.createClass({
 
         return (
             <SVG width={this.props.width} height={this.props.height}>
-                <DataSeries data={data.series} size={size} xScale={xScale} yScale={yScale} ref="Series" color="cornflowerblue" />
+                <DataSeries data={data.series} size={size} xScale={xScale} yScale={yScale} ref="Series" color="red" />
             </SVG>
         );
 
