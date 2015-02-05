@@ -1,26 +1,23 @@
 var React = require('react');
-var Chart = require('./components/chart.jsx');
+var LineChart = require('./components/LineChart.jsx');
 
-var sampleData = [
-    {id: '5fbmzmtc', x: 7, y: 41, z: 6},
-    {id: 's4f8phwm', x: 11, y: 45, z: 9},
-    {id: '532dfvma', x:13, y: 33, z: 12}
-];
+
+var data = {
+    series: [{x: 0, y: 20}, {x: 1, y: 30}, {x: 2, y: 10}, {x: 3, y: 5}, {x: 4, y: 8}, {x: 5, y: 15}, {x: 6, y: 10}]
+}
 
 var App = React.createClass({
     getInitialState: function() {
         return {
-            data: sampleData,
-            domain: {x: [0, 30], y: [0, 100]}
+            data: data
         };
     },
 
     render: function() {
         return (
             <div className="App">
-                <Chart
-                    data={this.state.data}
-                    domain={this.state.domain} />
+                <LineChart
+                    data={this.state.data}/>
             </div>
         );
     }

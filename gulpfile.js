@@ -19,3 +19,5 @@ gulp.task('buildHTML', function() {
 });
 
 gulp.task('build', ['buildHTML','buildJs']);
+
+gulp.task('default', ['build']);
