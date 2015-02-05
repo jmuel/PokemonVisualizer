@@ -1,25 +1,17 @@
 var React = require('react');
-var LineChart = require('./components/LineChart.jsx');
+var LineChart = require('react-d3').LineChart;
 var PokemonDataService = require('./services/PokemonDataService');
 
 var data = {
-    series: PokemonDataService.getUsage('Charizard')
-}
+    Charizard: PokemonDataService.getUsage('Charizard')
+};
 
-var App = React.createClass({
-    getInitialState: function() {
-        return {
-            data: data
-        };
-    },
+Window.data = data;
 
-    render: function() {
-        return (
-            <div className="App">
-                <LineChart data={this.state.data}/>
-            </div>
-        );
-    }
-});
-
-React.render(<App/>, document.getElementById('root'));
+React.render(<LineChart
+        data={data}
+        legend={true}
+        width={600}
+        height={300}
+        title="Pokemon Usage"
+    /> , document.getElementById('root'));
