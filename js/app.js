@@ -1,17 +1,11 @@
-var React = require('react');
-var LineChart = require('react-d3').LineChart;
-var PokemonDataService = require('./services/PokemonDataService');
+var React = require('react')
+,   UsageChart = require('./Components/UsageChart.jsx')
+,   PokemonActionCreator = require('./ActionCreators/PokemonActionCreators')
+,   Marty = require('marty');
 
-var data = {
-    Charizard: PokemonDataService.getUsage('Charizard')
-};
+Window.Marty = Marty;
+Window.React = React;
 
-Window.data = data;
+PokemonActionCreator.addPokemon('Charizard');
 
-React.render(<LineChart
-        data={data}
-        legend={true}
-        width={600}
-        height={300}
-        title="Pokemon Usage"
-    /> , document.getElementById('root'));
+React.render(<UsageChart/>, document.getElementById('root'));

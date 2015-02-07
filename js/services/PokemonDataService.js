@@ -1,4 +1,5 @@
-var d3 = require('d3');
+var d3 = require('d3')
+,   Marty = require('marty');
 
 var format = d3.time.format('%y-%b').parse;
 
@@ -14,9 +15,12 @@ var data = {
     ]
 };
 
-var Service = {
+console.log(format('14-JAN'));
+
+var Service = Marty.createStateSource({
     getUsage: function(pokemon) {
         return data[pokemon];
     }
-};
+});
+
 module.exports = Service;
