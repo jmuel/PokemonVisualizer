@@ -1,11 +1,22 @@
 var React = require('react')
 ,   UsageChart = require('./Components/UsageChart.jsx')
 ,   PokemonActionCreator = require('./ActionCreators/PokemonActionCreators')
-,   Marty = require('marty');
+,   Marty = require('marty')
+,   PokemonAdder = require('./Components/PokemonAdder.jsx');
 
 Window.Marty = Marty;
 Window.React = React;
 
-PokemonActionCreator.addPokemon('Charizard');
 
-React.render(<UsageChart/>, document.getElementById('root'));
+var App = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <PokemonAdder />
+                <UsageChart />
+            </div>
+        )
+    }
+});
+
+React.render(<App/>, document.getElementById('root'));

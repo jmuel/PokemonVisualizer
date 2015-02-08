@@ -12,6 +12,15 @@ var data = {
         {x: format('14-MAY'), y: .8},
         {x: format('14-JUN'), y: .15},
         {x: format('14-JUL'), y: .20}
+    ],
+    Bulbasaur: [
+        {x: format('14-JAN'), y: .30},
+        {x: format('14-FEB'), y: .80},
+        {x: format('14-MAR'), y: .20},
+        {x: format('14-APR'), y: .99},
+        {x: format('14-MAY'), y: .80},
+        {x: format('14-JUN'), y: .42},
+        {x: format('14-JUL'), y: .10}
     ]
 };
 
