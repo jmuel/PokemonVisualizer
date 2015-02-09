@@ -35,7 +35,6 @@ var data = {
 
 };
 
-console.log(format('14-JAN'));
 
 var Service = Marty.createStateSource({
     getUsage: function(pokemon) {

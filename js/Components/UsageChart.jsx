@@ -22,9 +22,8 @@ var UsageChart = React.createClass({
             <LineChart
                 data={data}
                 legend={true}
-                width={600}
-                height={300}
-                title="Pokemon Usage"
+                width={900}
+                height={600}
             />
         )
     }

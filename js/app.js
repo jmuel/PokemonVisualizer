@@ -4,7 +4,9 @@ var React = require('react')
 ,   Marty = require('marty')
 ,   PokemonAdder = require('./Components/PokemonAdder.jsx')
 ,   NavBar = require('./Components/NavBar.jsx')
-,   Container = require('./Components/Container.jsx');
+,   Container = require('./Components/Container.jsx')
+,   Content = require('./Components/Content.jsx')
+,   Footer = require('./Components/Footer.jsx');
 
 window.Marty = Marty;
 window.React = React;
@@ -13,16 +15,14 @@ window.React = React;
 var App = React.createClass({
     render: function() {
         return (
-            <div>
-                <NavBar>
-                    <h1>Pokemon Thing</h1>
-                </NavBar>
-                <Container>
+            <Container>
+                <NavBar title="Pokemon Usage"/>
+                <Content>
                     <UsageChart />
                     <PokemonAdder />
-                </Container>
-
-            </div>
+                </Content>
+                <Footer />
+            </Container>
         )
     }
 });

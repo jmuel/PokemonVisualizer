@@ -2,7 +2,8 @@ var React = require('react');
 
 var style = {
     backgroundColor: '#E8EAF6',
-    width: '100%'
+    width: '100%',
+    minHeight: '100%'
 };
 
 var Container = React.createClass({
