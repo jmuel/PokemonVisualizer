@@ -36,6 +36,7 @@ var data = {
 };
 
 
+
 var Service = Marty.createStateSource({
     getUsage: function(pokemon) {
         return data[pokemon];
