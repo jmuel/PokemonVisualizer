@@ -32,8 +32,26 @@ gulp.task('buildJS', function() {
     };
 
     return bundle();
-})
+});
 
+gulp.task('buildLocalJS', function() {
+    var bundler = browserify({
+        entries: ['./js/app.js'],
+        debug: true
+    });
+
+    var bundle = function() {
+        return bundler
+            .transform(reactify)
+            .bundle()
+            .pipe(source(getBundleName() + '.js'))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest('./dist/js/'));
+    };
+    return bundle();
+});
 
 gulp.task('buildHTML', function() {
     return gulp.src('./html/index.html')
@@ -46,5 +64,7 @@ gulp.task('buildCSS', function() {
 });
 
 gulp.task('build', ['buildHTML', 'buildCSS', 'buildJS']);
+
+gulp.task('local', ['buildHTML', 'buildCSS', 'buildLocalJS']);
 
 gulp.task('default', ['build']);

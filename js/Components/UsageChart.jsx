@@ -1,7 +1,8 @@
 var React = require('react')
 ,   LineChart = require('react-d3').LineChart
 ,   Marty = require('marty')
-,   PokemonStore = require('../Stores/PokemonStore');
+,   PokemonStore = require('../Stores/PokemonStore')
+,   _ = require('underscore');
 
 
 
@@ -12,9 +13,14 @@ var PokemonState = Marty.createStateMixin({
 var UsageChart = React.createClass({
     mixins: [PokemonState],
     render: function() {
+        var data = _.reduce(this.state.pokemon, function(memo, pokemonData, pokemon) {
+            memo[pokemon] = pokemonData.usage.ou;
+            return memo;
+        }, {})
+
         return (
             <LineChart
-                data={this.state.pokemon}
+                data={data}
                 legend={true}
                 width={600}
                 height={300}

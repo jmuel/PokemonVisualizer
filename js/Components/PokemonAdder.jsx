@@ -11,13 +11,18 @@ var PokemonAdder = React.createClass({
         this.setState({
             pokemon: event.target.value});
     },
+    handleKeyDown: function(event) {
+        if(event.keyCode == 13) {
+            return this.addPokemon();
+        }
+    },
     addPokemon: function() {
         PokemonActionCreators.addPokemon(this.state.pokemon);
     },
     render: function() {
         return (
             <div>
-                <input type="text" value={this.state.pokemon} onChange={this.handleChange}/>
+                <input type="text" value={this.state.pokemon} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
                 <input type="button" onClick={this.addPokemon} value="Add"/>
             </div>
         );
