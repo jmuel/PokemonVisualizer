@@ -2,7 +2,6 @@ var React = require('react');
 
 var style = {
     padding: 10,
-    paddingBottom: 80,
     height: '100%'
 };
 

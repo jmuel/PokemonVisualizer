@@ -1,1 +1,1 @@
-Right now I'm just setting up the skeleton for the app.
+The skeleton is set up for the line graph.

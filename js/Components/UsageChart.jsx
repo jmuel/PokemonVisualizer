@@ -2,13 +2,18 @@ var React = require('react')
 ,   LineChart = require('react-d3').LineChart
 ,   Marty = require('marty')
 ,   PokemonStore = require('../Stores/PokemonStore')
-,   _ = require('underscore');
+,   _ = require('underscore')
+,   d3 = require('d3');
 
 
 
 var PokemonState = Marty.createStateMixin({
     pokemon: PokemonStore
 });
+
+var tickFormatter = function(d) {
+    return d3.time.format('%m-Y')(new Date(d));
+};
 
 var UsageChart = React.createClass({
     mixins: [PokemonState],
@@ -20,10 +25,11 @@ var UsageChart = React.createClass({
 
         return (
             <LineChart
-                data={data}
                 legend={true}
+                data={data}
                 width={900}
                 height={600}
+                xAxisTickFormat={tickFormatter}
             />
         )
     }

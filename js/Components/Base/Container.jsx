@@ -1,7 +1,7 @@
 var React = require('react');
 
 var style = {
-    backgroundColor: '#E8EAF6',
+    backgroundColor: 'WHITE',
     width: '100%',
     minHeight: '100%'
 };

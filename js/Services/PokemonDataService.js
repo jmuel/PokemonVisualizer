@@ -1,7 +1,9 @@
 var d3 = require('d3')
 ,   Marty = require('marty');
 
-var format = d3.time.format('%y-%b').parse;
+var format = function(d) {
+    return d3.time.format('%y-%b').parse(d);
+}
 
 var data = {
     Charizard: {
@@ -32,8 +34,6 @@ var data = {
         }
     }
 };
-
-console.log(format('14-JAN'));
 
 var Service = Marty.createStateSource({
     getUsage: function(pokemon) {

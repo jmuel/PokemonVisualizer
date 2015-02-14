@@ -1,5 +1,5 @@
 var React = require('react')
-,   Title = require('./Base/Title.jsx');
+,   Title = require('./Title.jsx');
 
 var style = {
     backgroundColor: '#3F51B5',
