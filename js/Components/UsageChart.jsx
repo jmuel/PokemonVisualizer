@@ -12,7 +12,8 @@ var PokemonState = Marty.createStateMixin({
 });
 
 var xFormatter = function(d) {
-    return new Date(d);
+    var formatter = d3.time.format("%Y-%m-%d").parse;
+    return formatter(d.x);
 };
 
 var UsageChart = React.createClass({
