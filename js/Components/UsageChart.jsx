@@ -11,8 +11,8 @@ var PokemonState = Marty.createStateMixin({
     pokemon: PokemonStore
 });
 
-var tickFormatter = function(d) {
-    return d3.time.format('%m-Y')(new Date(d));
+var xFormatter = function(d) {
+    return new Date(d);
 };
 
 var UsageChart = React.createClass({
@@ -25,11 +25,12 @@ var UsageChart = React.createClass({
 
         return (
             <LineChart
-                legend={true}
+                legend={false}
                 data={data}
+                xAccessor={xFormatter}
+                yAccessor={function(d) {return d.y}}
                 width={900}
                 height={600}
-                xAxisTickFormat={tickFormatter}
             />
         )
     }
