@@ -30,6 +30,7 @@ var UsageChart = React.createClass({
                 data={data}
                 xAccessor={xFormatter}
                 yAccessor={function(d) {return d.y}}
+                xAxisTickInterval={{unit:'month', interval: 1}}
                 width={900}
                 height={600}
             />
