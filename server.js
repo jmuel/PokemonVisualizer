@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var compression = require('compression');
-var port = process.env.PORT || 12345;
+var port = process.env.PORT || 1337;
 
 
 app.get('/', function(req, res) {
