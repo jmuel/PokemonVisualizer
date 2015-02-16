@@ -12,7 +12,7 @@ var PokemonState = Marty.createStateMixin({
 });
 
 var xFormatter = function(d) {
-    var formatter = d3.time.format("%Y-%m-%d").parse;
+    var formatter = d3.time.format('%y-%b').parse;
     return formatter(d.x);
 };
 
@@ -20,21 +20,24 @@ var UsageChart = React.createClass({
     mixins: [PokemonState],
     render: function() {
         var data = _.reduce(this.state.pokemon, function(memo, pokemonData, pokemon) {
-            memo[pokemon] = pokemonData.usage.ou;
+            memo.push({
+                name: pokemon,
+                values: pokemonData.usage.ou
+            });
             return memo;
-        }, {})
+        }, []);
 
         return (
             <LineChart
-                legend={false}
+                legend={true}
                 data={data}
                 xAccessor={xFormatter}
-                yAccessor={function(d) {return d.y}}
-                xAxisTickInterval={{unit:'month', interval: 1}}
+                yAccessor={function(d) {return d.y; } }
+                xAxisTickInterval={{unit:'year', interval: 1}}
                 width={900}
                 height={600}
             />
-        )
+        );
     }
 });
 

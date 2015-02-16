@@ -9,8 +9,12 @@ var PokemonStore = Marty.createStore({
         addPokemon: Constants.ADD_POKEMON
     },
     addPokemon: function(pokemon) {
-        this.state[pokemon] = PokemonDataService.getUsage(pokemon);
-        this.hasChanged();
+        var pokeData = PokemonDataService.getUsage(pokemon);
+        if(pokeData) {
+            this.state[pokemon] = pokeData;
+            this.hasChanged();
+        }
+
     },
     getInitialState: function() {
         return {};

@@ -5,6 +5,7 @@ var reactify = require('reactify');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
+var to5ify = require('6to5ify');
 
 var getBundleName = function () {
     var version = require('./package.json').version;
@@ -14,12 +15,13 @@ var getBundleName = function () {
 
 gulp.task('buildJS', function() {
     var bundler = browserify({
-        entries: ['./js/app.js'],
+        entries: ['./js/app.jsx'],
         debug: true
     });
 
-    var bundle = function() {
+    var build = function() {
         return bundler
+            .transform(to5ify)
             .transform(reactify)
             .bundle()
             .pipe(source(getBundleName() + '.js'))
@@ -31,17 +33,18 @@ gulp.task('buildJS', function() {
             .pipe(gulp.dest('./dist/js/'));
     };
 
-    return bundle();
+    return build();
 });
 
 gulp.task('buildLocalJS', function() {
     var bundler = browserify({
-        entries: ['./js/app.js'],
+        entries: ['./js/app.jsx'],
         debug: true
     });
 
-    var bundle = function() {
+    var build = function() {
         return bundler
+            .transform(to5ify)
             .transform(reactify)
             .bundle()
             .pipe(source(getBundleName() + '.js'))
@@ -50,7 +53,7 @@ gulp.task('buildLocalJS', function() {
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest('./dist/js/'));
     };
-    return bundle();
+    return build();
 });
 
 gulp.task('buildHTML', function() {

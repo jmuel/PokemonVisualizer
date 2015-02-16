@@ -5,4 +5,4 @@ var React = require('react')
 window.Marty = Marty;
 window.React = React;
 
-React.render(<Usage/>, document.getElementById('root'));
+React.render(<Usage />, document.getElementById('root'));

@@ -16,7 +16,7 @@ var Usage = React.createClass({
                     <PokemonAdder />
                 </Content>
             </Container>
-        )
+        );
     }
 });
 

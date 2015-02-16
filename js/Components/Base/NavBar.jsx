@@ -13,7 +13,7 @@ var NavBar = React.createClass({
             <div style={style}>
                 <Title>{this.props.title}</Title>
             </div>
-        )
+        );
     }
 });
 
