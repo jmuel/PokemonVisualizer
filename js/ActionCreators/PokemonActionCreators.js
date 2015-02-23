@@ -1,11 +1,14 @@
 var Marty = require('marty')
-,   Constants = require('../Constants');
+, Constants = require('../Constants');
 
 var PokemonActionCreators = Marty.createActionCreators({
-    displayName: 'Pokemon',
-    addPokemon: Constants.ADD_POKEMON(function(pokemon) {
-        this.dispatch(pokemon);
-    })
+  displayName: 'Pokemon',
+  getPokemon: Constants.GET_POKEMON(function(pokemon) {
+    this.dispatch(pokemon);  
+  }),
+  addPokemon: Constants.ADD_POKEMON(function(pokemon, data) {
+    this.dispatch(pokemon, data);
+  })
 });
 
 module.exports = PokemonActionCreators;

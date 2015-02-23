@@ -1,18 +1,18 @@
 var React = require('react');
 
 var style = {
-    padding: 10,
-    height: '100%'
+  padding: 10,
+  height: '100%'
 };
 
 var Content = React.createClass({
-    render: function() {
-        return (
-            <div style={style}>
-                {this.props.children}
-            </div>
-        );
-    }
+  render: function() {
+    return (
+      <div style={style}>
+        {this.props.children}
+      </div>
+    );
+  }
 });
 
 module.exports = Content;
