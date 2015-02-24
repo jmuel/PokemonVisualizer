@@ -12,32 +12,42 @@ var PokemonState = Marty.createStateMixin({
 });
 
 var xFormatter = function(d) {
-  console.log(d);
-  var formatter = d3.time.format('%b/%Y').parse;
-  return formatter(d.x['usage']);
+  var formatter = d3.time.format('%m/%Y').parse;
+  return formatter(d.x);
 };
+
+var yFormatter = function(d) {
+  return d.y;
+};
+
+var buildValues = function(monthData) {
+  return _.reduce(monthData, function(memo, data, date) {
+    var d = {
+      x: date,
+      y: data['usage']
+    };
+    memo.push(d);
+    return memo;
+  }, []); 
+}
 
 var UsageChart = React.createClass({
   mixins: [PokemonState],
   render: function() {
     var data = _.reduce(this.state.pokemon, function(memo, pokemonData, pokemon) {
-      console.log(pokemonData["1"]["ou"]["0"]);
       memo.push({
         name: pokemon,
-        //it goes pokemon, gen, format (ou), elo, month and then data
-        values: pokemonData["1"]["ou"]["0"]
+        values: buildValues(pokemonData["1"]["ou"]["0"])
       });
       return memo;
     }, []);
 
-    console.log(data);
-    
     return (
       <LineChart
         legend={true}
         data={data}
         xAccessor={xFormatter}
-        yAccessor={function(d) {return d.y; } }
+        yAccessor={yFormatter}
         xAxisTickInterval={{unit:'year', interval: 1}}
         width={900}
         height={600}

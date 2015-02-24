@@ -1,5 +1,6 @@
 var React = require('react')
 , Marty = require('marty')
+, _ = require('underscore')
 , PokemonStore = require('../Stores/PokemonStore');
 
 var PokemonState = Marty.createStateMixin({
@@ -9,8 +10,18 @@ var PokemonState = Marty.createStateMixin({
 var PrettyPrinter = React.createClass({
   mixins:[PokemonState],
   render: function() {
+    var data = _.reduce(this.state.pokemon, function(memo, pokemonData, pokemon) {
+      memo.push({
+        name: pokemon,
+        value: pokemonData['1']['ou']['0']
+      });  
+      return memo;
+    }, []);
+
+    console.log(data);
+
     return (
-      <div>{JSON.stringify(this.state.pokemon, null, 2)}</div> 
+      <pre>{JSON.stringify(data, null, 2)}</pre> 
     );
   }
 });

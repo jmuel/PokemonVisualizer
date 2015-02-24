@@ -13,7 +13,7 @@ var Usage = React.createClass({
       <Container>
         <NavBar title="Pokemon Usage"/>
         <Content>
-          <PrettyPrinter />
+          <UsageChart/>
           <PokemonAdder />
         </Content>
       </Container>
