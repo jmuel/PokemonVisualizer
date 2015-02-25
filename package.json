@@ -5,6 +5,8 @@
     "start": "node server.js",
     "lint": "jsxhint --jsx-only js/* || true",
     "build": "gulp build",
+    "start": "node server.js",
+    "postinstall": "npm run build",
     "local": "gulp local",
     "wiki": "tiddlywiki wiki --server"
   },
@@ -18,8 +20,6 @@
     "react": "^0.12.2",
     "react-d3": "^0.2.0",
     "underscore": "^1.7.0"
-  },
-  "devDependencies": {
     "babelify": "^5.0.3",
     "browserify": "^8.1.0",
     "gulp": "^3.8.10",
