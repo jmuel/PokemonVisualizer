@@ -33,9 +33,7 @@
     "react-d3": "^0.2.0",
     "react-tap-event-plugin": "^0.1.4",
     "tiddlywiki": "^5.1.7",
-    "underscore": "^1.7.0"
-  },
-  "devDependencies": {
+    "underscore": "^1.7.0",
     "gulp-rename": "^1.2.0",
     "gulp-streamify": "0.0.5",
     "through2": "^0.6.3"
