@@ -1,17 +1,20 @@
 var React = require('react')
 , Title = require('./Title.jsx');
 
-var style = {
-  backgroundColor: '#3F51B5',
-  width: '100%',
-  height: '100%'
-};
 
 var NavBar = React.createClass({
   render: function() {
     return (
-      <div style={style}>
-        <Title>{this.props.title}</Title>
+      <div className="row">
+        <div className="four columns">
+          <h4>Pokemon Visualizer</h4>
+        </div>
+        <div id="nav" className="eight columns">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Pokemon Usage</a></li>
+          </ul>
+        </div>
       </div>
     );
   }

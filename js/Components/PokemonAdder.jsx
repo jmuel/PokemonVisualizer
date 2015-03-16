@@ -21,9 +21,9 @@ var PokemonAdder = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <input type="text" value={this.state.pokemon} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
-        <input type="button" onClick={this.addPokemon} value="Add"/>
+      <div className="row">
+        <input className="three columns" type="button" onClick={this.addPokemon} value="Add a Pokemon"/>
+        <input className="nine columns" type="text" value={this.state.pokemon} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
       </div>
     );
   }

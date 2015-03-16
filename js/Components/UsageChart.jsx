@@ -28,7 +28,7 @@ var buildValues = function(monthData) {
     };
     memo.push(d);
     return memo;
-  }, []); 
+  }, []);
 }
 
 var UsageChart = React.createClass({
@@ -49,8 +49,8 @@ var UsageChart = React.createClass({
         xAccessor={xFormatter}
         yAccessor={yFormatter}
         xAxisTickInterval={{unit:'year', interval: 1}}
-        width={900}
-        height={600}
+        width={600}
+        height={450}
       />
     );
   }

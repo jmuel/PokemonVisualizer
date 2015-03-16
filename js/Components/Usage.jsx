@@ -1,7 +1,6 @@
-var Container = require('./Base/Container.jsx')
+var UsageChart = require('./UsageChart.jsx')
 , NavBar = require('./Base/NavBar.jsx')
-, Content = require('./Base/Content.jsx')
-, UsageChart = require('./UsageChart.jsx')
+, FormatSelector = require('./Base/FormatSelector.jsx')
 , PrettyPrinter = require('./PrettyPrinter.jsx')
 , PokemonAdder = require('./PokemonAdder.jsx')
 , React = require('react');
@@ -10,13 +9,12 @@ var Container = require('./Base/Container.jsx')
 var Usage = React.createClass({
   render: function() {
     return (
-      <Container>
-        <NavBar title="Pokemon Usage"/>
-        <Content>
-          <UsageChart/>
-          <PokemonAdder />
-        </Content>
-      </Container>
+      <div className="container">
+        <NavBar />
+        <FormatSelector />
+        <PokemonAdder />
+        <UsageChart/>
+      </div>
     );
   }
 });
