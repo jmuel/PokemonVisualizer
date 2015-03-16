@@ -44,13 +44,13 @@ var UsageChart = React.createClass({
 
     return (
       <LineChart
-        legend={true}
+        legend={false}
         data={data}
         xAccessor={xFormatter}
         yAccessor={yFormatter}
         xAxisTickInterval={{unit:'year', interval: 1}}
-        width={600}
-        height={450}
+        width={960}
+        height={500}
       />
     );
   }
