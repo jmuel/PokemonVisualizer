@@ -1,11 +1,13 @@
-var gulp = require('gulp')
-, browserify = require('browserify')
-, uglify = require('gulp-uglify')
-, sourcemaps = require('gulp-sourcemaps')
-, babelify = require('babelify')
-, rename = require('gulp-rename')
-, through2 = require('through2')
-, less = require('gulp-less');
+var gulp = require('gulp');
+var browserify = require('browserify');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var babelify = require('babelify');
+var rename = require('gulp-rename');
+var through2 = require('through2');
+var less = require('gulp-less');
+
+
 
 var getBundleName = function () {
   var version = require('./package.json').version;

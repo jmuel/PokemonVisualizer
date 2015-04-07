@@ -1,5 +1,5 @@
-var React = require('react')
-, PokemonActionCreators = require('../ActionCreators/PokemonActionCreators');
+var React = require('react');
+var PokemonActionCreators = require('../ActionCreators/PokemonAction');
 
 var PokemonAdder = React.createClass({
   getInitialState: function() {
@@ -17,7 +17,7 @@ var PokemonAdder = React.createClass({
     }
   },
   addPokemon: function() {
-    PokemonActionCreators.getPokemon(this.state.pokemon);
+    PokemonActionCreators.addPokemon(this.state.pokemon);
   },
   render: function() {
     return (

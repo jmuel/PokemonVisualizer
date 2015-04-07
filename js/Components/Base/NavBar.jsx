@@ -12,7 +12,7 @@ var NavBar = React.createClass({
         <div id="nav" className="eight columns">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Pokemon Usage</a></li>
+            <li><a href="#">Usage</a></li>
           </ul>
         </div>
       </div>

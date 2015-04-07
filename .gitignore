@@ -2,3 +2,4 @@
 node_modules/
 dist/
 .vagrant/
+.DS_Store

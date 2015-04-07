@@ -1,9 +1,8 @@
-var UsageChart = require('./UsageChart.jsx')
-, NavBar = require('./Base/NavBar.jsx')
-, FormatSelector = require('./Base/FormatSelector.jsx')
-, PrettyPrinter = require('./PrettyPrinter.jsx')
-, PokemonAdder = require('./PokemonAdder.jsx')
-, React = require('react');
+var UsageChart = require('./UsageChart.jsx');
+var NavBar = require('./Base/NavBar.jsx');
+var FormatSelector = require('./Base/FormatSelector.jsx');
+var PokemonAdder = require('./PokemonAdder.jsx');
+var React = require('react');
 
 
 var Usage = React.createClass({

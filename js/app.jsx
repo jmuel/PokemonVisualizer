@@ -1,8 +1,6 @@
-var React = require('react')
-,   Marty = require('marty')
-,   Usage = require('./Components/Usage.jsx');
+var React = require('react');
+var   Usage = require('./Components/Usage.jsx');
 
-window.Marty = Marty;
 window.React = React;
 
 

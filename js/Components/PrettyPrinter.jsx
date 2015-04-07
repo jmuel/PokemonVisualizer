@@ -1,7 +1,7 @@
-var React = require('react')
-, Marty = require('marty')
-, _ = require('underscore')
-, PokemonStore = require('../Stores/PokemonStore');
+var React = require('react');
+var Marty = require('marty');
+var _ = require('underscore');
+var PokemonStore = require('../Stores/PokemonStore');
 
 var PokemonState = Marty.createStateMixin({
   pokemon: PokemonStore

@@ -1,34 +1,61 @@
-var Marty = require('marty')
-, Constants = require('../Constants')
-, PokemonDataService = require('../Services/PokemonDataService')
-, PokemonSource = require('../Sources/PokemonSource')
-, _ = require('underscore');
+var Dispatcher = require('../Dispatcher');
+var EventEmitter = require('events').EventEmitter;
+var Constants = require('../Constants/PokemonConstants');
+var _ = require('lodash');
 
-var PokemonStore = Marty.createStore({
-  displayName: 'Pokemon Store',
-  handlers: {
-    addPokemon: Constants.ADD_POKEMON,
-    getPokemon: Constants.GET_POKEMON
-  },
-  addPokemon: function(pokemon, data) {
-    this.state[pokemon] = data;
-    this.hasChanged();
-  
-  },
-  getPokemon: function(pokemon) {
-    return this.fetch({
-      id: pokemon,
-      locally: function() {
-        return this.state[pokemon]; 
-      },
-      remotely: function() {
-        return PokemonSource.getPokemon(pokemon);   
-      }
-    }); 
-  },
-  getInitialState: function() {
-    return {};
-  }
+var pokemonData = {
+};
+
+var addPokemon = function(pokemon, data) {
+	pokemonData[pokemon] = data;
+};
+
+var activeGeneration = 1;
+
+var CHANGE_EVENT = 'change';
+
+var PokemonStore = _.assign({}, EventEmitter.prototype, {
+	emitChange: function() {
+		this.emit(CHANGE_EVENT);
+	},
+
+	addChangeListener: function(callback) {
+		this.on(CHANGE_EVENT, callback);
+	},
+
+	removeChangeListener: function(callback) {
+		this.removeListener(CHANGE_EVENT, callback);
+	},
+
+	//we're just giving back the data for the current generation
+	getActivePokemonData: function() {
+		return _.reduce(pokemonData, function(memo, data, pokemon) {
+			var genData = data[activeGeneration];
+			if(genData) {
+				memo[pokemon] = genData;
+			}
+			return memo;
+
+		}, {});
+	},
+
+	getActiveGeneration: function() {
+		return activeGeneration;
+	}
+});
+
+PokemonStore.dispatchToken = Dispatcher.register(function(action) {
+	switch(action.actionType) {
+		case Constants.ADD_POKEMON_SUCCESS:
+			addPokemon(action.pokemon, action.data);
+			PokemonStore.emitChange();
+			break;
+		case Constants.CHANGE_GENERATION:
+			activeGeneration = action.generation; 
+			PokemonStore.emitChange();
+			break;
+		default: //noop
+	}
 });
 
 module.exports = PokemonStore;
