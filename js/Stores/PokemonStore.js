@@ -6,11 +6,14 @@ var _ = require('lodash');
 var pokemonData = {
 };
 
+var activeGeneration = 1;
+var activeFormat = 'ou';
+
 var addPokemon = function(pokemon, data) {
 	pokemonData[pokemon] = data;
 };
 
-var activeGeneration = 1;
+
 
 var CHANGE_EVENT = 'change';
 
@@ -41,6 +44,10 @@ var PokemonStore = _.assign({}, EventEmitter.prototype, {
 
 	getActiveGeneration: function() {
 		return activeGeneration;
+	},
+
+	getActiveFormat: function() {
+		return activeFormat;
 	}
 });
 

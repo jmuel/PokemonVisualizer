@@ -7,7 +7,8 @@ var d3 = require('d3');
 var getStateFromStores = function() {
   return {
     pokemon: PokemonStore.getActivePokemonData(),
-    generation: PokemonStore.getActiveGeneration()
+    generation: PokemonStore.getActiveGeneration(),
+    format: PokemonStore.getActiveFormat()
   };
 };
 
@@ -49,23 +50,23 @@ var UsageChart = React.createClass({
   },
 
   render: function() {
-    var data = _.reduce(this.state.pokemon, function(memo, pokemonData, pokemon) {
+    var data = _.reduce(this.state.pokemon, (memo, pokemonData, pokemon) => {
       memo.push({
         name: pokemon,
-        values: buildValues(pokemonData["ou"]["0"])
+        values: buildValues(pokemonData[this.state.format]["0"])
       });
       return memo;
     }, []);
 
     return (
       <LineChart
-        legend={false}
+        legend={true}
         data={data}
         xAccessor={xFormatter}
         yAccessor={yFormatter}
         xAxisTickInterval={{unit:'year', interval: 1}}
-        width={647}
-        height={400}
+        width={900}
+        height={559}
       />
     );
   }
