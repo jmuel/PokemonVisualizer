@@ -6,8 +6,8 @@ var _ = require('lodash');
 var pokemonData = {
 };
 
-var activeGeneration = 1;
-var activeFormat = 'ou';
+var activeGeneration = 2;
+var activeFormat = 'oubeta';
 
 var addPokemon = function(pokemon, data) {
 	pokemonData[pokemon] = data;
@@ -32,7 +32,7 @@ var PokemonStore = _.assign({}, EventEmitter.prototype, {
 
 	//we're just giving back the data for the current generation
 	getActivePokemonData: function() {
-		return _.reduce(pokemonData, function(memo, data, pokemon) {
+		var pokedata = _.reduce(pokemonData, function(memo, data, pokemon) {
 			var genData = data[activeGeneration];
 			if(genData) {
 				memo[pokemon] = genData;
@@ -40,6 +40,8 @@ var PokemonStore = _.assign({}, EventEmitter.prototype, {
 			return memo;
 
 		}, {});
+
+		return pokedata;
 	},
 
 	getActiveGeneration: function() {
@@ -58,7 +60,7 @@ PokemonStore.dispatchToken = Dispatcher.register(function(action) {
 			PokemonStore.emitChange();
 			break;
 		case Constants.CHANGE_GENERATION:
-			activeGeneration = action.generation; 
+			activeGeneration = action.generation;
 			PokemonStore.emitChange();
 			break;
 		default: //noop

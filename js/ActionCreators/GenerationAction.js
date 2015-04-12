@@ -5,7 +5,7 @@ var GenerationActions =  {
   changeGeneration: function(gen) {
     Dispatcher.dispatch({
       actionType: Constants.CHANGE_GENERATION,
-      generaton: gen
+      generation: gen
     });
   }
 

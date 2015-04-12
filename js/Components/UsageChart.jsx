@@ -1,16 +1,7 @@
 var React = require('react');
 var LineChart = require('react-d3').LineChart;
-var PokemonStore = require('../Stores/PokemonStore');
 var _ = require('underscore');
 var d3 = require('d3');
-
-var getStateFromStores = function() {
-  return {
-    pokemon: PokemonStore.getActivePokemonData(),
-    generation: PokemonStore.getActiveGeneration(),
-    format: PokemonStore.getActiveFormat()
-  };
-};
 
 var xFormatter = function(d) {
   var formatter = d3.time.format('%m/%Y').parse;
@@ -33,27 +24,13 @@ var buildValues = function(monthData) {
 };
 
 var UsageChart = React.createClass({
-  getInitialState: function() {
-    return getStateFromStores()
-  },
-
-  componentDidMount: function() {
-    PokemonStore.addChangeListener(this._onChange);
-  },
-
-  componentDidUnmount: function() {
-    PokemonStore.removeChangeListener(this._onChange);
-  },
-
-  _onChange: function() {
-    this.setState(getStateFromStores());
-  },
 
   render: function() {
-    var data = _.reduce(this.state.pokemon, (memo, pokemonData, pokemon) => {
+    var data = _.reduce(this.props.pokemonData, (memo, pokemonData, pokemon) => {
+      console.log(pokemonData);
       memo.push({
         name: pokemon,
-        values: buildValues(pokemonData[this.state.format]["0"])
+        values: buildValues(pokemonData[this.props.format]["0"])
       });
       return memo;
     }, []);
