@@ -60,6 +60,9 @@ PokemonStore.dispatchToken = Dispatcher.register(function(action) {
 			break;
 		case Constants.CHANGE_GENERATION:
 			format.activeGeneration = action.generation;
+			if(!_.includes(_.keys(format.generations[format.activeGeneration]), format.activeFormat)) {
+				format.activeFormat = _.keys(format.generations[format.activeGeneration])[0];
+			}
 			PokemonStore.emitChange();
 			break;
 		case Constants.CHANGE_FORMAT:

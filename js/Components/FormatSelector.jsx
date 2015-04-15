@@ -14,10 +14,10 @@ var FormatSelector = React.createClass({
   render: function() {
     var formatList = this.props.format.generations;
     var generationOptions = _.map(formatList, function(formats, gen) {
-      return <option value={gen}>Generation {gen}</option>;
+      return <option key={gen} value={gen}>Generation {gen}</option>;
     });
     var formatOptions = _.map(formatList[this.props.format.activeGeneration], function(elos, format) {
-      return <option value={format}>{format}</option>;
+      return <option key={format} value={format}>{format}</option>;
     });
 
     return (

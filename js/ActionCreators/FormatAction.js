@@ -14,7 +14,7 @@ var FormatActions =  {
   changeGeneration: function(gen) {
     Dispatcher.dispatch({
       actionType: Constants.CHANGE_GENERATION,
-      generation: gen
+      generation: parseInt(gen)
     });
   },
 
