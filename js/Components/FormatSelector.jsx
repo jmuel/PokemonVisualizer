@@ -1,26 +1,32 @@
 var React = require('react');
-var GenerationAction = require('../ActionCreators/GenerationAction');
+var FormatAction = require('../ActionCreators/FormatAction');
+var _ = require('lodash');
 
 var FormatSelector = React.createClass({
   _changeGeneration: function(event) {
-    console.log(event.target);
-    GenerationAction.changeGeneration(event.target.value);
+    FormatAction.changeGeneration(event.target.value);
+  },
 
+  _changeFormat: function(event) {
+    FormatAction.changeFormat(event.target.value);
   },
 
   render: function() {
+    var formatList = this.props.format.generations;
+    var generationOptions = _.map(formatList, function(formats, gen) {
+      return <option value={gen}>Generation {gen}</option>;
+    });
+    var formatOptions = _.map(formatList[this.props.format.activeGeneration], function(elos, format) {
+      return <option value={format}>{format}</option>;
+    });
+
     return (
       <div className="row">
-        <select className="six columns" value={this.props.generation} onChange={this._changeGeneration}>
-          <option value="1">Generation 1</option>
-          <option value="2">Generation 2</option>
-          <option value="3">Generation 3</option>
-          <option value="4">Generation 4</option>
-          <option value="5">Generation 5</option>
-          <option value="6">Generation 6</option>
+        <select className="six columns" value={this.props.format.activeGeneration} onChange={this._changeGeneration}>
+          {generationOptions}
         </select>
-        <select className="six columns">
-          <option>OverUsed</option>
+        <select className="six columns" value={this.props.format.activeFormat} onChange={this._changeFormat}>
+          {formatOptions}
         </select>
       </div>
     );

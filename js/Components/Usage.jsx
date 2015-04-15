@@ -8,8 +8,7 @@ var PokemonStore = require('../Stores/PokemonStore');
 var getStateFromStores = function() {
   return {
     pokemon: PokemonStore.getActivePokemonData(),
-    generation: PokemonStore.getActiveGeneration(),
-    format: PokemonStore.getActiveFormat()
+    format: PokemonStore.getFormat()
   };
 };
 
@@ -34,9 +33,9 @@ var Usage = React.createClass({
     return (
       <div className="container">
         <NavBar />
-        <FormatSelector generation={this.state.generation}/>
+        <FormatSelector format={this.state.format}/>
         <PokemonAdder />
-        <UsageChart pokemonData={this.state.pokemon} format={this.state.format} generation={this.state.generation} />
+        <UsageChart pokemonData={this.state.pokemon} format={this.state.format}/>
       </div>
     );
   }

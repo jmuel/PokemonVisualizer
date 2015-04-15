@@ -27,10 +27,9 @@ var UsageChart = React.createClass({
 
   render: function() {
     var data = _.reduce(this.props.pokemonData, (memo, pokemonData, pokemon) => {
-      console.log(pokemonData);
       memo.push({
         name: pokemon,
-        values: buildValues(pokemonData[this.props.format]["0"])
+        values: buildValues(pokemonData[this.props.format.activeFormat]["0"])
       });
       return memo;
     }, []);

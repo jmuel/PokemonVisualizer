@@ -18,8 +18,6 @@ var PrettyPrinter = React.createClass({
       return memo;
     }, []);
 
-    console.log(data);
-
     return (
       <pre>{JSON.stringify(data, null, 2)}</pre> 
     );

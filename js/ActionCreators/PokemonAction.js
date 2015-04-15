@@ -1,16 +1,15 @@
 var Dispatcher = require('../Dispatcher');
 var Constants = require('../Constants/PokemonConstants');
-var superAgent = require('superagent');
-
-var baseUrl = 'http://pokestat.org.uk/api/';
+var SuperAgent = require('superagent');
+var ApiConstants = require('../Constants/ApiConstants');
 
 var PokemonActions = {
 	addPokemon: function(pokemonName, generation) {
 		Dispatcher.dispatch({
 			actionType: Constants.ADD_POKEMON
 		});
-		superAgent
-			.get(baseUrl + 'pokemon/' + pokemonName)
+		SuperAgent
+			.get(ApiConstants.baseUrl + ApiConstants.individualPokemon + pokemonName)
 			.set('Accept', 'application/json')
 			.end(function(err, res) {
 				if(res.ok) {

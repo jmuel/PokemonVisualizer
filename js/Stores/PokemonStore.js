@@ -6,8 +6,11 @@ var _ = require('lodash');
 var pokemonData = {
 };
 
-var activeGeneration = 2;
-var activeFormat = 'oubeta';
+var format = {
+	activeFormat: 'ou',
+	activeGeneration: 1,
+	generations: {}
+}
 
 var addPokemon = function(pokemon, data) {
 	pokemonData[pokemon] = data;
@@ -33,7 +36,7 @@ var PokemonStore = _.assign({}, EventEmitter.prototype, {
 	//we're just giving back the data for the current generation
 	getActivePokemonData: function() {
 		var pokedata = _.reduce(pokemonData, function(memo, data, pokemon) {
-			var genData = data[activeGeneration];
+			var genData = data[format.activeGeneration];
 			if(genData) {
 				memo[pokemon] = genData;
 			}
@@ -44,12 +47,8 @@ var PokemonStore = _.assign({}, EventEmitter.prototype, {
 		return pokedata;
 	},
 
-	getActiveGeneration: function() {
-		return activeGeneration;
-	},
-
-	getActiveFormat: function() {
-		return activeFormat;
+	getFormat: function() {
+		return format;
 	}
 });
 
@@ -60,7 +59,15 @@ PokemonStore.dispatchToken = Dispatcher.register(function(action) {
 			PokemonStore.emitChange();
 			break;
 		case Constants.CHANGE_GENERATION:
-			activeGeneration = action.generation;
+			format.activeGeneration = action.generation;
+			PokemonStore.emitChange();
+			break;
+		case Constants.CHANGE_FORMAT:
+			format.activeFormat = action.format;
+			PokemonStore.emitChange();
+			break;
+		case Constants.LOAD_ALL_GENS_AND_FORMATS_SUCCESS:
+			format.generations = action.data;
 			PokemonStore.emitChange();
 			break;
 		default: //noop
